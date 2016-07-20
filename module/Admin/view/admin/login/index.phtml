@@ -1,0 +1,34 @@
+<?php
+echo $this->partial('message');
+?>
+
+<?php 
+$form = $this->loginForm;
+//$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<table>
+  <tr>
+    <td><?php echo $this->formlabel($form->get('email'));?></td>
+    <td><?php echo $this->formElement($form->get('email')); ?>
+    <span class="common-error-msg"><?php echo $this->formElementErrors($form->get('email'));?></span></td>
+  </tr>
+  <tr>
+    <td><?php echo $this->formlabel($form->get('password'));?></td>
+    <td><?php echo $this->formElement($form->get('password')); ?>
+    <span class="common-error-msg"><?php echo $this->formElementErrors($form->get('password'));?></span></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+    <?php
+        echo $this->formRow($form->get('loginCsrf'));
+        echo $this->formElement($form->get('submit'));
+    ?>
+    </td>
+  </tr>
+</table>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<a href="/admin/login/logout">Logout</a>
